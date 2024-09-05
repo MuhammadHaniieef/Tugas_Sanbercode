@@ -18,7 +18,16 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::get('/main', function () {
+    return view('main');
+});
 
 Route::get('/', [HomeController::class, 'home']);
 Route::get('/register', [AuthController::class, 'daftar']);
 Route::post('/welcome', [AuthController::class, 'welcome']);
+Route::get('/data-table', function () {
+    return view('data_table');
+});
+Route::get('/table', function () {
+    return view('table');
+});
