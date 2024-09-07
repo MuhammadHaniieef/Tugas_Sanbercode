@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +32,6 @@ Route::get('/data-table', function () {
 Route::get('/table', function () {
     return view('table');
 });
+Route::get('category/tambah', [CategoryController::class, 'store']);
+Route::post('/category', [CategoryController::class, 'store']);
+Route::get('/category', [CategoryController::class, 'index']);

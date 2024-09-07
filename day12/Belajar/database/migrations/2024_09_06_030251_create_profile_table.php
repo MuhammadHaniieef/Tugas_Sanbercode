@@ -13,15 +13,22 @@ return new class extends Migration
     {
         Schema::create('profile', function (Blueprint $table) {
             $table->id();
+            $table->text("bio");
+            $table->integer("age");
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // onDelete('cascade') untuk hapus otomatis
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
+        Schema::table('profile', function (Blueprint $table) {
+            $table->dropForeign(['user_id']); // Hapus foreign key terlebih dahulu
+        });
+
         Schema::dropIfExists('profile');
     }
+
+
 };
